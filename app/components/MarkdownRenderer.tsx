@@ -14,17 +14,17 @@ const MemoizedComponents = {
   h2: memo(({node, ...props}: any) => <h2 className="scroll-m-20 border-b pb-2 text-[1.875em] font-semibold tracking-tight first:mt-0" {...props} />),
   h3: memo(({node, ...props}: any) => <h3 className="scroll-m-20 text-[1.5em] font-semibold tracking-tight" {...props} />),
   h4: memo(({node, ...props}: any) => <h4 className="scroll-m-20 text-[1.25em] font-semibold tracking-tight" {...props} />),
-  p: memo(({node, ...props}: any) => <p className="leading-7 [&:not(:first-child)]:mt-6" {...props} />),
+  p: memo(({node, ...props}: any) => <p className="leading-7 not-first:mt-6" {...props} />),
   blockquote: memo(({node, ...props}: any) => <blockquote className="mt-6 border-l-2 pl-6 italic" {...props} />),
-  ul: memo(({node, ...props}: any) => <ul className="!my-1 ml-6 list-disc" {...props} />),
+  ul: memo(({node, ...props}: any) => <ul className="my-1! ml-6 list-disc" {...props} />),
   ol: memo(({node, ...props}: any) => <ol className="my-6 ml-6 list-decimal [&>li]:mt-2" {...props} />),
   table: memo(({node, ...props}: any) => <div className="my-6 w-full overflow-y-auto"><table className="w-full rounded-lg" {...props} /></div>),
-  th: memo(({node, ...props}: any) => <th className="border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right" {...props} />),
-  td: memo(({node, ...props}: any) => <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right" {...props} />),
+  th: memo(({node, ...props}: any) => <th className="border px-4 py-2 text-left font-bold [[align-center]]:text-center [[align=right]]:text-right" {...props} />),
+  td: memo(({node, ...props}: any) => <td className="border px-4 py-2 text-left [[align=center]]:text-center [[align=right]]:text-right" {...props} />),
   a: memo(({node, ...props}: any) => <a className="font-medium text-primary underline underline-offset-4" {...props} />),
   pre: memo(({node, ...props}: any) => <pre {...props} />),
   img: memo(({node, ...props}: any) => <img className="w-full h-auto rounded-lg" {...props} />),
-  hr: memo(({node, ...props}: any) => <hr className="!my-8" {...props} />),
+  hr: memo(({node, ...props}: any) => <hr className="my-8!" {...props} />),
   input: memo(({node, className, ...props}: any) => {
     if (props.type === 'checkbox') {
       return <input type="checkbox" className={`mr-2 ${className}`} {...props} />;
@@ -33,7 +33,6 @@ const MemoizedComponents = {
   }),
 };
 
-// @ts-expect-error: props never read
 const CodeBlock = memo(({ node, inline, className, children, ...props }: any) => {
   const codeElement = children as React.ReactElement<{ children?: string }>;
 

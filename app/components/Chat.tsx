@@ -5,6 +5,7 @@ import { useChat } from "@/contexts/chat-context";
 import ChatMessageList from "./ChatMessageList";
 import { openai } from "@/lib/services/openai";
 import { chatStorage, StoredMessage } from "@/lib/services/local-storage";
+import { generateUUID } from "@/lib/utils";
 
 interface ChatProps {
   messages: StoredMessage[];
@@ -130,14 +131,14 @@ export function useChatInput() {
     const parentId = messages.length > 0 ? messages[messages.length - 1].id : null;
 
     const userMessage: StoredMessage = {
-      id: crypto.randomUUID(),
+      id: generateUUID(),
       role: "user",
       content: userMessageContent,
       createdAt: new Date().toISOString(),
       parentMessageId: parentId,
     };
 
-    const assistantMessageId = crypto.randomUUID();
+    const assistantMessageId = generateUUID();
     const assistantMessage: StoredMessage = {
       id: assistantMessageId,
       role: "assistant",
@@ -190,7 +191,7 @@ export function useChatInput() {
     } catch (error) {
       console.error("Error streaming chat:", error);
       const errorMessage: StoredMessage = {
-        id: crypto.randomUUID(),
+        id: generateUUID(),
         role: "assistant",
         content: "Sorry, there was an error processing your request: " + error,
         parentMessageId: parentId,
@@ -244,7 +245,7 @@ export function useChatInput() {
     if (messageIndex === -1) return;
 
     const messageToRetry = messages[messageIndex];
-    const newMessageId = crypto.randomUUID();
+    const newMessageId = generateUUID();
     const newMessage: StoredMessage = {
       id: newMessageId,
       role: 'assistant',
@@ -321,8 +322,8 @@ export function useChatInput() {
       return;
     }
 
-    const userMsgId = crypto.randomUUID();
-    const assistantTempId = crypto.randomUUID();
+    const userMsgId = generateUUID();
+    const assistantTempId = generateUUID();
 
     const userMessage: StoredMessage = {
       id: userMsgId,

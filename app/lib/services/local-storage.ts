@@ -1,3 +1,5 @@
+import { generateUUID } from '../utils';
+
 export interface StoredMessage {
   id: string;
   role: 'user' | 'assistant';
@@ -89,7 +91,7 @@ class LocalStorageService {
   createChat(title?: string): StoredChat {
     const now = new Date().toISOString();
     const chat: StoredChat = {
-      id: crypto.randomUUID(),
+      id: generateUUID(),
       title: title || 'New Chat',
       messages: [],
       currentLeafMessageId: null,

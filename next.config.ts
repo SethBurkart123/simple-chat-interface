@@ -2,10 +2,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  experimental: {
-    viewTransition: true,
+  output: 'export',
+  images: {
+    unoptimized: true,
   },
-  allowedDevOrigins: ["192.168.0.209"]
 };
 
 export default nextConfig;

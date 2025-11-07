@@ -1,7 +1,6 @@
 import { useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { AllChatsData } from '@/lib/types/chat';
-import { api } from '@/lib/services/api';
 
 interface UseChatOperationsProps {
   allChatsData: AllChatsData;
@@ -38,8 +37,6 @@ export function useChatOperations({
 
   const deleteChat = useCallback(async (id: string) => {
     try {
-      await api.deleteChat(id);
-
       const { [id]: deletedChat, ...remainingChats } = allChatsData.chats;
       const nextData: AllChatsData = { ...allChatsData, chats: remainingChats };
       setAllChatsData(nextData);
@@ -63,8 +60,6 @@ export function useChatOperations({
     if (!trimmedTitle || !allChatsData.chats[id]) return;
 
     try {
-      await api.renameChat(id, trimmedTitle);
-
       const nextData: AllChatsData = {
         ...allChatsData,
         chats: {
