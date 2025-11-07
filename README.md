@@ -18,7 +18,7 @@ npm install
 
 ## Setup
 
-You'll need to create a `.env.local` file in the root directory with your OpenAI configuration:
+You'll need to create a `.env` file in the root directory with your OpenAI configuration:
 
 ```env
 NEXT_PUBLIC_OPENAI_API_KEY=your_api_key_here
