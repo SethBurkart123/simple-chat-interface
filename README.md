@@ -27,7 +27,7 @@ NEXT_PUBLIC_OPENAI_MODEL=gpt-4o-mini
 ```
 
 > [!WARNING]
-> **⚠️ Warning**: Since these are `NEXT_PUBLIC_` variables, your API key will be exposed in the client-side code. Only use this with API keys you're comfortable making public, or use a proxy/backend service instead.
+> Since these are `NEXT_PUBLIC_` variables, your API key will be exposed in the client-side code. Only use this with API keys you're comfortable making public, or use a proxy/backend service instead.
 
 ## Run
 
